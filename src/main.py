@@ -1,15 +1,8 @@
-from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from schemas import InputTextSchema, ProcessedTextSchema, SearchResultsSchema
 from utils import process_text, search
 
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    yield
-
-
-app = FastAPI(lifespan=lifespan)
+app = FastAPI()
 
 
 @app.post('/process_text', response_model=ProcessedTextSchema)

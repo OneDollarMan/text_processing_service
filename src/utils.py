@@ -6,6 +6,8 @@ from nltk.corpus import stopwords
 
 nlp = spacy.load("ru_core_news_sm")
 stop_words = set(stopwords.words('russian'))
+
+# База данных отзывов
 database = []
 with open('db.txt', 'r') as file:
     for line in file:
