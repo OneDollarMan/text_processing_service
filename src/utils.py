@@ -11,7 +11,7 @@ stop_words = set(stopwords.words('russian'))
 database = []
 with open('db.txt', 'r') as file:
     for line in file:
-        database.append(line)
+        database.append(line.strip())
 
 # Создание TF-IDF индекса
 vectorizer = TfidfVectorizer()
