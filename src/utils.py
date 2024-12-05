@@ -2,10 +2,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from schemas import ProcessedTextSchema, SearchResultsSchema, SearchResultSchema
 import spacy
-from nltk.corpus import stopwords
 
 nlp = spacy.load("ru_core_news_sm")
-stop_words = set(stopwords.words('russian'))
 
 # База данных отзывов
 database = []
@@ -32,7 +30,7 @@ def process_text(text: str):
     # Лемматизация и очистка от стоп-слов
     tokens = [
         token.lemma_ for token in doc
-        if token.lemma_ not in stop_words and token.is_alpha
+        if token.is_alpha and not token.is_stop
     ]
     return ProcessedTextSchema(tokens=tokens)
 
